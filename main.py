@@ -453,11 +453,4 @@ async def loa_recent(interaction: discord.Interaction, limit: Optional[int] = 10
 if not CONFIG.get("token") or "PASTE_YOUR_BOT_TOKEN_HERE" in str(CONFIG.get("token")):
     raise ValueError("Put your bot token in config.yml (token: ...) before running.")
 
-import os
-
-token = os.getenv("DISCORD_TOKEN") or CONFIG.get("token")
-
-if not token:
-    raise ValueError("No bot token provided.")
-
-client.run(token)
+client.run(CONFIG["token"])
